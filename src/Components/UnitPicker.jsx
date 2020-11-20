@@ -32,6 +32,6 @@ UnitPicker.propTypes = {
   armyIndex: PropTypes.number.isRequired,
   index: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
-  addingUnit: PropTypes.func.bool.isRequired,
+  addingUnit: PropTypes.bool.isRequired,
   setAddingUnit: PropTypes.func.isRequired,
 };

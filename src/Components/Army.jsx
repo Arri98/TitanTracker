@@ -13,8 +13,10 @@ function Army(props) {
   } = props;
 
   let numUnits = 0;
-  for (let i = 0; i <= units.length; i += 1) {
-    numUnits += units.numberUnits;
+  if (units.length > 0) {
+    for (let i = 0; i < units.length; i += 1) {
+      numUnits += units[i].Num;
+    }
   }
 
   return (
@@ -24,13 +26,13 @@ function Army(props) {
     >
       <h3>{title}</h3>
       <h4>
-        {units.length}
+        {numUnits}
         /7
       </h4>
       <br />
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {
-          units.map((element, indexM) => <Unit key={indexM} index={indexM} name={element.Name} numberUnits={element.Num} armyIndex={props.index} dispatch={props.dispatch} />)
+          units.map((element, indexM) => <Unit key={indexM} index={indexM} name={element.Name} numberUnits={element.Num} totalNumUnits={numUnits} armyIndex={props.index} dispatch={props.dispatch} />)
         }
       </div>
       <button type="button" onClick={() => setAddingUnit(true)}> Añadir unidad </button>
@@ -44,12 +46,13 @@ export default Army;
 
 Army.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
-  units: PropTypes.array.isRequired,
-  index: PropTypes.string.isRequired,
+  units: PropTypes.array,
+  index: PropTypes.number.isRequired,
   title: PropTypes.string,
   dispatch: PropTypes.func.isRequired,
 };
 
 Army.defaultProps = {
   title: '',
+  units: [],
 };

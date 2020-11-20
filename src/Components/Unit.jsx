@@ -5,7 +5,7 @@ import UnitPerName from './Units/UnitPerName';
 
 function Unit(props) {
   const {
-    name, armyIndex, index, numberUnits, dispatch,
+    name, armyIndex, index, numberUnits, dispatch, totalNumUnits,
   } = props;
   return (
     <div style={{ border: 'solid', margin: '5px', padding: '5px' }}>
@@ -13,7 +13,7 @@ function Unit(props) {
       <br />
       <button type="button" onClick={() => dispatch({ type: 'decrease', index, armyIndex })}>-</button>
       {numberUnits}
-      <button type="button" onClick={() => dispatch({ type: 'increase', index, armyIndex })}>+</button>
+      <button type="button" onClick={() => { if (totalNumUnits < 7) { dispatch({ type: 'increase', index, armyIndex }); } }}>+</button>
       <br />
       <button type="button" onClick={() => dispatch({ type: 'removeUnit', index, armyIndex })}>Del</button>
     </div>
@@ -28,4 +28,5 @@ Unit.propTypes = {
   index: PropTypes.number.isRequired,
   numberUnits: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
+  totalNumUnits: PropTypes.number.isRequired,
 };

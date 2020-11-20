@@ -8,9 +8,8 @@ import ArmyCreator from './ArmyCreator';
 import Army from './Army';
 
 function ArmyContainer(props) {
-  const { Title } = props;
+  const { title } = props;
 
-  const [title] = useState(Title);
   const [addingArmy, setAddingArmy] = useState(false);
 
   const memoizedCallback = useCallback(
@@ -62,7 +61,6 @@ function ArmyContainer(props) {
       <h1>{title}</h1>
       <br />
       <div>
-        /
         { armies.map((element, index) => <Army key={index} units={element.units} index={index} title={element.title} dispatch={dispatch} />)}
       </div>
       <br />
@@ -76,5 +74,5 @@ function ArmyContainer(props) {
 export default ArmyContainer;
 
 ArmyContainer.propTypes = {
-  Title: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
