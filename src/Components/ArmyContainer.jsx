@@ -1,9 +1,16 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable max-len */
+/* eslint-disable no-case-declarations */
 import React, { useState, useReducer, useCallback } from 'react';
+import PropTypes from 'prop-types';
+
 import ArmyCreator from './ArmyCreator';
 import Army from './Army';
 
 function ArmyContainer(props) {
-  const [title] = useState(props.title);
+  const { Title } = props;
+
+  const [title] = useState(Title);
   const [addingArmy, setAddingArmy] = useState(false);
 
   const memoizedCallback = useCallback(
@@ -23,25 +30,25 @@ function ArmyContainer(props) {
         case 'removeUnit':
           const tempR = [...state];
           let temp2R = tempR[action.armyIndex].units;
-          temp2R = temp2R.filter((_, index) => index != action.index);
+          temp2R = temp2R.filter((_, index) => index !== action.index);
           tempR[action.armyIndex].units = temp2R;
           return tempR;
         case 'increase':
           const tempI = [...state];
           const temp2I = tempI[action.armyIndex].units[action.index];
-          temp2I.Num++;
+          temp2I.Num += 1;
           tempI[action.armyIndex].units[action.index] = temp2I;
           return tempI;
 
         case 'decrease':
           const tempD = [...state];
           const temp2D = tempD[action.armyIndex].units[action.index];
-          temp2D.Num--;
+          temp2D.Num -= 1;
           temp2D.Num = temp2D.Num <= 0 ? 0 : temp2D.Num;
           tempD[action.armyIndex].units[action.index] = temp2D;
           return tempD;
         case 'removeArmy':
-          return state.filter((_, index) => index != action.index);
+          return state.filter((_, index) => index !== action.index);
         default:
           return state;
       }
@@ -55,10 +62,11 @@ function ArmyContainer(props) {
       <h1>{title}</h1>
       <br />
       <div>
+        /
         { armies.map((element, index) => <Army key={index} units={element.units} index={index} title={element.title} dispatch={dispatch} />)}
       </div>
       <br />
-      <button onClick={() => setAddingArmy(true)}> Añadir ejercito </button>
+      <button type="button" onClick={() => setAddingArmy(true)}> Añadir ejercito </button>
       <br />
       <ArmyCreator addingArmy={addingArmy} setAddingArmy={setAddingArmy} dispatch={dispatch} />
     </div>
@@ -66,3 +74,7 @@ function ArmyContainer(props) {
 }
 
 export default ArmyContainer;
+
+ArmyContainer.propTypes = {
+  Title: PropTypes.string.isRequired,
+};

@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import UnitPerName from './Units/UnitPerName';
 
 function Unit(props) {
@@ -11,7 +13,7 @@ function Unit(props) {
       <br />
       <button type="button" onClick={() => dispatch({ type: 'decrease', index, armyIndex })}>-</button>
       {numberUnits}
-      <button type="button" onClick={() => dispatch({ type: 'increase', index: armyIndex })}>+</button>
+      <button type="button" onClick={() => dispatch({ type: 'increase', index, armyIndex })}>+</button>
       <br />
       <button type="button" onClick={() => dispatch({ type: 'removeUnit', index, armyIndex })}>Del</button>
     </div>
@@ -19,3 +21,11 @@ function Unit(props) {
 }
 
 export default Unit;
+
+Unit.propTypes = {
+  name: PropTypes.string.isRequired,
+  armyIndex: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
+  numberUnits: PropTypes.number.isRequired,
+  dispatch: PropTypes.func.isRequired,
+};

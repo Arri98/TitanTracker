@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function Unit(props) {
   const { name, image } = props;
@@ -11,3 +12,8 @@ function Unit(props) {
 }
 
 export default Unit;
+
+Unit.propTypes = {
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+};

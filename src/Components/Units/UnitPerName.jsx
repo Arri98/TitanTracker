@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Unit from './Unit';
 import Angel from '../../images/Angel.gif';
 import Archangel from '../../images/Archangel.gif';
@@ -83,3 +84,7 @@ function UnitPerName(props) {
 }
 
 export default UnitPerName;
+
+UnitPerName.propTypes = {
+  name: PropTypes.string.isRequired,
+};

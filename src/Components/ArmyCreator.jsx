@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-function Army(props) {
+function ArmyCreator(props) {
+  const { addingArmy, dispatch, setAddingArmy } = props;
+
   const [title, setTitle] = useState('');
-  const [state, setState] = useState(props.addingArmy);
+  const [state, setState] = useState(addingArmy);
 
   const handleChange = (event) => setTitle(event.target.value);
 
   useEffect(() => {
-    setState(props.addingArmy);
-  }, [props.addingArmy]);
+    setState(addingArmy);
+  }, [addingArmy]);
 
   return state ? (
     <div className="Army Picker" style={{ display: { state }, marginTop: '5px' }}>
@@ -16,11 +19,17 @@ function Army(props) {
       <br />
       <input type="text" style={{ margin: '5px' }} onChange={handleChange} value={title} />
       <br />
-      <button onClick={() => { props.dispatch({ type: 'addArmy', army: title }); }}>Añadir</button>
-      <button onClick={() => { props.setAddingArmy(false); }}>Cerrar</button>
+      <button type="button" onClick={() => { dispatch({ type: 'addArmy', army: title }); }}>Añadir</button>
+      <button type="button" onClick={() => { setAddingArmy(false); }}>Cerrar</button>
     </div>
   )
     : null;
 }
 
-export default Army;
+export default ArmyCreator;
+
+ArmyCreator.propTypes = {
+  addingArmy: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired,
+  setAddingArmy: PropTypes.func.isRequired,
+};
