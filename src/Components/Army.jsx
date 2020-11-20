@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import UnitPicker from './UnitPicker';
 import Unit from './Unit';
+import Points from './Units/Const';
 
 function Army(props) {
   const [addingUnit, setAddingUnit] = useState(false);
@@ -19,17 +20,24 @@ function Army(props) {
     }
   }
 
+  let ArmyPoints = 0;
+  if (units.length > 0) {
+    for (let i = 0; i < units.length; i += 1) {
+      ArmyPoints += Points[units[i].Name] * units[i].Num;
+    }
+  }
+
   return (
     <div style={{
       border: 'solid', paddingBottom: '5px', marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', margin: 'auto',
     }}
     >
       <h3>{title}</h3>
-      <h4>
-        {numUnits}
-        /7
-      </h4>
-      <br />
+      Points:
+      {ArmyPoints}
+      <br/>
+      {numUnits}
+      /7
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {
           units.map((element, indexM) => <Unit key={indexM} index={indexM} name={element.Name} numberUnits={element.Num} totalNumUnits={numUnits} armyIndex={props.index} dispatch={props.dispatch} />)
