@@ -28,7 +28,7 @@ Recruitment.Centauro = (number) => {
   if (number === 2) {
     return [{ Unidad: 'Centauro', Casilla: 'Plains' }, { Unidad: 'Leon', Casilla: 'Plains' }];
   }
-  if (number > 3) {
+  if (number >= 3) {
     return [{ Unidad: 'Centauro', Casilla: 'Plains' }, { Unidad: 'Leon', Casilla: 'Plains' }, { Unidad: 'Warbear', Casilla: 'Woodds' }];
   }
   return [];
@@ -71,7 +71,7 @@ Recruitment.Gargola = (number) => {
   if (number === 2) {
     return [{ Unidad: 'Gargola', Casilla: 'Brush' }, { Unidad: 'Gargola', Casilla: 'Jungle' }, { Unidad: 'Ciclope', Casilla: 'Brush' }];
   }
-  if (number > 3) {
+  if (number >= 3) {
     return [{ Unidad: 'Gargola', Casilla: 'Brush' }, { Unidad: 'Gargola', Casilla: 'Jungle' }, { Unidad: 'Ciclope', Casilla: 'Brush' }, { Unidad: 'Ciclope', Casilla: 'Jungle' }];
   }
   return [];
@@ -118,7 +118,7 @@ Recruitment.Leon = (number) => {
   if (number === 2) {
     return [{ Unidad: 'Leon', Casilla: 'Mountain' }, { Unidad: 'Leon', Casilla: 'Plains' }, { Unidad: 'Leon', Casilla: 'Dessert' }, { Unidad: 'Minotauro', Casilla: 'Mountain' }, { Unidad: 'Ranger', Casilla: 'Plains' }];
   }
-  if (number > 3) {
+  if (number >= 3) {
     return [{ Unidad: 'Leon', Casilla: 'Mountain' }, { Unidad: 'Leon', Casilla: 'Plains' }, { Unidad: 'Leon', Casilla: 'Desert' }, { Unidad: 'Minotauro', Casilla: 'Mountain' }, { Unidad: 'Ranger', Casilla: 'Plains' }, { Unidad: 'Griffo', Casilla: 'Desert' }];
   }
   return [];
@@ -141,7 +141,7 @@ Recruitment.Ogro = (number) => {
   if (number === 2) {
     return [{ Unidad: 'Ogro', Casilla: 'Marsh' }, { Unidad: 'Ogro', Casilla: 'Hills' }, { Unidad: 'Troll', Casilla: 'Marsh' }];
   }
-  if (number > 3) {
+  if (number >= 3) {
     return [{ Unidad: 'Ogro', Casilla: 'Marsh' }, { Unidad: 'Ogro', Casilla: 'Hills' }, { Unidad: 'Troll', Casilla: 'Marsh' }, { Unidad: 'Minotaur', Casilla: 'Hills' }];
   }
   return [];
