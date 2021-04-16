@@ -4,7 +4,7 @@ import ButtonDiv from './ButtonDiv';
 
 function UnitPicker(props) {
   const {
-    numUnits, armyIndex, index, dispatch, addingUnit, setAddingUnit,
+    numUnits, armyIndex, index, dispatch, addingUnit,
   } = props;
 
   const [state, setState] = useState(addingUnit);
@@ -19,7 +19,6 @@ function UnitPicker(props) {
       <br />
       <ButtonDiv armyIndex={armyIndex} index={index} dispatch={dispatch} />
       <br />
-      <button type="button" onClick={() => { setAddingUnit(false); }}>Terminar</button>
     </div>
   )
     : null;
@@ -33,5 +32,5 @@ UnitPicker.propTypes = {
   index: PropTypes.number.isRequired,
   dispatch: PropTypes.func.isRequired,
   addingUnit: PropTypes.bool.isRequired,
-  setAddingUnit: PropTypes.func.isRequired,
+
 };

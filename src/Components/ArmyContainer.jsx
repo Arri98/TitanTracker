@@ -64,7 +64,7 @@ function ArmyContainer(props) {
         { armies.map((element, index) => <Army key={index} units={element.units} index={index} title={element.title} dispatch={dispatch} />)}
       </div>
       <br />
-      <button type="button" onClick={() => setAddingArmy(true)}> Añadir ejercito </button>
+      <button style={{backgroundColor: addingArmy ? 'green' : 'red'}} type="button" onClick={() => setAddingArmy(addingArmy ?  false : true)}> Añadir ejercito </button>
       <br />
       <ArmyCreator addingArmy={addingArmy} setAddingArmy={setAddingArmy} dispatch={dispatch} />
     </div>

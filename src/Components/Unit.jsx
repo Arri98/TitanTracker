@@ -8,14 +8,14 @@ function Unit(props) {
     name, armyIndex, index, numberUnits, dispatch, totalNumUnits,
   } = props;
   return (
-    <div style={{ border: 'solid', margin: '5px', padding: '5px' }}>
+    <div style={{ border: 'solid', margin: '5px', padding: '5px', borderRadius: '15px',  backgroundColor: '#397477' }}>
       <UnitPerName name={name} />
       <br />
-      <button type="button" onClick={() => dispatch({ type: 'decrease', index, armyIndex })}>-</button>
+      <button type="button" style={{borderRadius:'20px', backgroundColor:'#ffffff', margin: '5px'}} onClick={() => {dispatch({ type: 'decrease', index, armyIndex }); if(numberUnits <= 1){ dispatch({ type: 'removeUnit', index, armyIndex })}}}>-</button>
       {numberUnits}
-      <button type="button" onClick={() => { if (totalNumUnits < 7) { dispatch({ type: 'increase', index, armyIndex }); } }}>+</button>
+      <button type="button" style={{borderRadius:'20px', backgroundColor:'#ffffff', margin: '5px'}} onClick={() => { if (totalNumUnits < 7) { dispatch({ type: 'increase', index, armyIndex }); } }}>+</button>
       <br />
-      <button type="button" onClick={() => dispatch({ type: 'removeUnit', index, armyIndex })}>Del</button>
+      <button type="button" style={{backgroundColor:'red'}} onClick={() => dispatch({ type: 'removeUnit', index, armyIndex })}>Del</button>
     </div>
   );
 }

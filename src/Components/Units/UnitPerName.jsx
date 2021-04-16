@@ -31,53 +31,53 @@ function UnitPerName(props) {
 
   switch (name) {
     case 'Angel':
-      return <Unit name="Angel" image={Angel} />;
+      return <Unit name="Angel" image={Angel} attack={6} defense={4} doesFly={true} hasRange={false}/>;
     case 'Arcangel':
-      return <Unit name="Arcangel" image={Archangel} />;
+      return <Unit name="Arcangel" image={Archangel} attack={9} defense={4} doesFly={true} hasRange={false}/>;
     case 'Titan':
-      return <Unit name="Titan" image={Titan} />;
+      return <Unit name="Titan" image={Titan} attack={X} defense={4} doesFly={false} hasRange={false} />;
     case 'Guardian':
-      return <Unit name="Guardian" image={Guardian} />;
+      return <Unit name="Guardian" image={Guardian} attack={6} defense={4} doesFly={false} hasRange={false} />;
     case 'Warlock':
-      return <Unit name="Warlock" image={Warlock} />;
+      return <Unit name="Warlock" image={Warlock} attack={5} defense={4} doesFly={false} hasRange={true} />;
     case 'Behemot':
-      return <Unit name="Behemot" image={Behemot} />;
+      return <Unit name="Behemot" image={Behemot} attack={8} defense={3} doesFly={false} hasRange={false}/>;
     case 'Centauro':
-      return <Unit name="Centauro" image={Centaur} />;
+      return <Unit name="Centauro" image={Centaur} attack={3} defense={4} doesFly={false} hasRange={false}/>;
     case 'Coloso':
-      return <Unit name="Coloso" image={Colossus} />;
+      return <Unit name="Coloso" image={Colossus} attack={10} defense={4} doesFly={false} hasRange={false}/>;
     case 'Ciclope':
-      return <Unit name="Ciclope" image={Cyclops} />;
+      return <Unit name="Ciclope" image={Cyclops} attack={9} defense={2} doesFly={false} hasRange={false}/>;
     case 'Dragon':
-      return <Unit name="Dragon" image={Dragon} />;
+      return <Unit name="Dragon" image={Dragon} attack={9} defense={3} doesFly={true} hasRange={true}/>;
     case 'Gorgona':
-      return <Unit name="Gorgona" image={Gorgon} />;
+      return <Unit name="Gorgona" image={Gorgon} attack={6} defense={3} doesFly={true} hasRange={true}/>;
     case 'Gigante':
-      return <Unit name="Gigante" image={Gigant} />;
+      return <Unit name="Gigante" image={Gigant} attack={7} defense={4} doesFly={false} hasRange={true}/>;
     case 'Gargola':
-      return <Unit name="Gargola" image={Gargoyle} />;
+      return <Unit name="Gargola" image={Gargoyle} attack={4} defense={3} doesFly={true} hasRange={false}/>;
     case 'Griffo':
-      return <Unit name="Griffo" image={Griffon} />;
+      return <Unit name="Griffo" image={Griffon} attack={5} defense={4} doesFly={true} hasRange={false}/>;
     case 'Hydra':
-      return <Unit name="Hydra" image={Hydra} />;
+      return <Unit name="Hydra" image={Hydra} attack={10} defense={3} doesFly={true} hasRange={false}/>;
     case 'Leon':
-      return <Unit name="Leon" image={Lion} />;
+      return <Unit name="Leon" image={Lion} attack={5} defense={3} doesFly={false} hasRange={false}/>;
     case 'Ogro':
-      return <Unit name="Ogro" image={Ogre} />;
+      return <Unit name="Ogro" image={Ogre} attack={6} defense={2} doesFly={false} hasRange={false}/>;
     case 'Minotauro':
-      return <Unit name="Minotauro" image={Minotaur} />;
+      return <Unit name="Minotauro" image={Minotaur} attack={4} defense={4} doesFly={false} hasRange={true}/>;
     case 'Ranger':
-      return <Unit name="Ranger" image={Ranger} />;
+      return <Unit name="Ranger" image={Ranger} attack={4} defense={4} doesFly={false} hasRange={true}/>;
     case 'Serpiente':
-      return <Unit name="Serpiente" image={Serpent} />;
+      return <Unit name="Serpiente" image={Serpent} attack={18} defense={2} doesFly={false} hasRange={false}/>;
     case 'Troll':
-      return <Unit name="Troll" image={Troll} />;
+      return <Unit name="Troll" image={Troll} attack={8} defense={2} doesFly={false} hasRange={false}/>;
     case 'Unicornio':
-      return <Unit name="Unicornio" image={Unicorn} />;
-    case 'Warbear':
-      return <Unit name="Warbear" image={Warbear} />;
+      return <Unit name="Unicornio" image={Unicorn} attack={6} defense={4} doesFly={false} hasRange={false}/>;
+    case 'Warbear': 
+      return <Unit name="Warbear" image={Warbear} attack={6} defense={3} doesFly={false} hasRange={false}/>;
     case 'Wyvern':
-      return <Unit name="Wyvern" image={Wyvern} />;
+      return <Unit name="Wyvern" image={Wyvern} attack={7} defense={3} doesFly={false} hasRange={true}/>;
     default:
       return null;
   }

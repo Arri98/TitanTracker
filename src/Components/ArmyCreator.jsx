@@ -19,7 +19,7 @@ function ArmyCreator(props) {
       <br />
       <input type="text" style={{ margin: '5px' }} onChange={handleChange} value={title} />
       <br />
-      <button type="button" onClick={() => { dispatch({ type: 'addArmy', army: title }); }}>Añadir</button>
+      <button type="button" onClick={() => { setAddingArmy(false); dispatch({ type: 'addArmy', army: title }); }}>Añadir</button>
       <button type="button" onClick={() => { setAddingArmy(false); }}>Cerrar</button>
     </div>
   )

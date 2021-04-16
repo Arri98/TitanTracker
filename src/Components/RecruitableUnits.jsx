@@ -10,7 +10,7 @@ const RecruitableUnits = (props) => {
     return (
       <>
         {units.map((element) => (
-          <div display flex>
+          <div style={{ border: 'solid', margin: '5px', padding: '5px', borderRadius: '15px', backgroundColor: '#397477' }}>
             <UnitPerName name={element.Unidad} />
             <TileByName name={element.Casilla} />
           </div>

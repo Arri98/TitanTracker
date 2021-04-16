@@ -56,29 +56,35 @@ function Army(props) {
 
   return (
     <div style={{
-      border: 'solid', paddingBottom: '5px', marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', margin: 'auto',
+      border: 'solid', paddingBottom: '5px', marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', margin: 'auto', background: 'rgb(15 31 60)'
     }}
     >
+      <button style={{alignSelf:'flex-end',background:'red'}} type="button" onClick={() => dispatch({ type: 'removeArmy', index: props.index })}>X</button>
       <h3>{title}</h3>
       Points:
       {ArmyPoints}
       <br />
       {numUnits}
       /7
+      <br /> <br />
       <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
         {
           units.map((element, indexM) => <Unit key={indexM} index={indexM} name={element.Name} numberUnits={element.Num} totalNumUnits={numUnits} armyIndex={props.index} dispatch={props.dispatch} />)
             }
       </div>
-      <button type="button" ref={target} onClick={() => setHided(!hided)}>Show Recruitable</button>
-      <button type="button" onClick={() => setAddingUnit(true)}> Añadir unidad </button>
-      <UnitPicker addingUnit={addingUnit} armyIndex={index} setAddingUnit={setAddingUnit} index={units.length} numUnits={numUnits} dispatch={dispatch} />
-      <button type="button" onClick={() => dispatch({ type: 'removeArmy', index: props.index })}>Del</button>
-      <div style={{
-        display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', width: '80%', 
-      }}
-      >
-        {hided ? null : <RecruitableUnitsElement units={RecruitableUnits} />}
+      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '0.5em', marginBottom: '0.5em' }}>
+	<button style={{ background: hided ? 'red' : 'green' }} type="button" ref={target} onClick={() => setHided(!hided)}>Show Recruitable</button>
+	<button style={{ background: addingUnit ? 'green' : 'red' }} type="button" onClick={() => setAddingUnit(addingUnit ? false : true)}> Añadir unidad </button>
+      </div>
+      <UnitPicker addingUnit={addingUnit} armyIndex={index} index={units.length} numUnits={numUnits} dispatch={dispatch} />
+      <div style={{display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'center', width: '80%'}}>
+     	      {hided ? null : <h2>Unidades reclutables</h2>}
+	      <div style={{
+		display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', 
+	      }}
+	      >
+		{hided ? null : <RecruitableUnitsElement units={RecruitableUnits} />}
+	      </div>
       </div>
     </div>
   );
