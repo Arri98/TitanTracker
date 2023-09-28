@@ -183,7 +183,7 @@ Recruitment.Warbear = (number) => {
     return [{ Unidad: 'Warbear', Casilla: 'Tundra' }, { Unidad: 'Warbear', Casilla: 'Woods' }];
   }
   if (number >= 2) {
-    return [{ Unidad: 'Warbear', Casilla: 'Tundra' }, { Unidad: 'Warbear', Casilla: 'Woods' }, { Unidad: 'Gigante', Casilla: 'Tundra' }, { Unidad: 'Unicorn', Casilla: 'Woods' }];
+    return [{ Unidad: 'Warbear', Casilla: 'Tundra' }, { Unidad: 'Warbear', Casilla: 'Woods' }, { Unidad: 'Gigante', Casilla: 'Tundra' }, { Unidad: 'Unicornio', Casilla: 'Woods' }];
   }
   return [];
 };

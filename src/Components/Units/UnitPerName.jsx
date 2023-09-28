@@ -35,7 +35,7 @@ function UnitPerName(props) {
     case 'Arcangel':
       return <Unit name="Arcangel" image={Archangel} attack={9} defense={4} doesFly={true} hasRange={false}/>;
     case 'Titan':
-      return <Unit name="Titan" image={Titan} attack={X} defense={4} doesFly={false} hasRange={false} />;
+      return <Unit name="Titan" image={Titan} attack={'X'} defense={4} doesFly={false} hasRange={false} />;
     case 'Guardian':
       return <Unit name="Guardian" image={Guardian} attack={6} defense={4} doesFly={false} hasRange={false} />;
     case 'Warlock':
