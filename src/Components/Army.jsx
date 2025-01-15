@@ -11,7 +11,7 @@ import Recruitment from './Units/Recruitment';
 import RecruitableUnitsElement from './RecruitableUnits';
 
 function Army(props) {
-  const [addingUnit, setAddingUnit] = useState(false);
+  const [addingUnit, setAddingUnit] = useState(true);
   const [hided, setHided] = useState(false);
 
   const target = useRef(null);
@@ -56,35 +56,39 @@ function Army(props) {
 
   return (
     <div style={{
-      border: 'solid', paddingBottom: '5px', marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', margin: 'auto', background: 'rgb(15 31 60)'
+      border: 'solid', paddingBottom: '5px', marginTop: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '80%', margin: 'auto', background: 'rgb(15 31 60)',
     }}
     >
-      <button style={{alignSelf:'flex-end',background:'red'}} type="button" onClick={() => dispatch({ type: 'removeArmy', index: props.index })}>X</button>
-      <h3>{title}</h3>
+      <button style={{ alignSelf: 'flex-end', background: 'red' }} type="button" onClick={() => dispatch({ type: 'removeArmy', index: props.index })}>X</button>
+      <div>{title}</div>
       Points:
       {ArmyPoints}
       <br />
       {numUnits}
       /7
-      <br /> <br />
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+      <div style={{ overflow: 'scroll', display: 'flex', flexWrap: 'nowrap', width: '100%'}}>
         {
           units.map((element, indexM) => <Unit key={indexM} index={indexM} name={element.Name} numberUnits={element.Num} totalNumUnits={numUnits} armyIndex={props.index} dispatch={props.dispatch} />)
             }
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '0.5em', marginBottom: '0.5em' }}>
-	<button style={{ background: hided ? 'red' : 'green' }} type="button" ref={target} onClick={() => setHided(!hided)}>Show Recruitable</button>
-	<button style={{ background: addingUnit ? 'green' : 'red' }} type="button" onClick={() => setAddingUnit(addingUnit ? false : true)}> Añadir unidad </button>
+      <div style={{
+        display: 'flex', flexWrap: 'wrap', justifyContent: 'center', marginTop: '0.5em', marginBottom: '0.5em',
+      }}
+      >
+        <button style={{ background: hided ? 'grey' : 'peru' }} type="button" ref={target} onClick={() => setHided(!hided)}>Reclutamiento</button>
+        <button style={{ background: addingUnit ? 'peru' : 'grey' }} type="button" onClick={() => setAddingUnit(!addingUnit)}> Añadir </button>
       </div>
       <UnitPicker addingUnit={addingUnit} armyIndex={index} index={units.length} numUnits={numUnits} dispatch={dispatch} />
-      <div style={{display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'center', width: '80%'}}>
-     	      {hided ? null : <h2>Unidades reclutables</h2>}
-	      <div style={{
-		display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'center', 
+      <div style={{
+        display: 'flex', flexDirection: 'column', flexWrap: 'wrap', justifyContent: 'center', width: '80%',
+      }}
+      >
+        <div style={{
+          overflow: 'scroll', display: 'flex', flexWrap: 'nowrap', width: '100%'
 	      }}
-	      >
-		{hided ? null : <RecruitableUnitsElement units={RecruitableUnits} />}
-	      </div>
+        >
+          {hided ? null : <RecruitableUnitsElement units={RecruitableUnits} />}
+        </div>
       </div>
     </div>
   );

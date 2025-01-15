@@ -58,13 +58,13 @@ function ArmyContainer(props) {
 
   return (
     <div style={{ width: '100%' }}>
-      <h1>{title}</h1>
+      {title}
       <br />
       <div style={{ width: '100%' }}>
         { armies.map((element, index) => <Army key={index} units={element.units} index={index} title={element.title} dispatch={dispatch} />)}
       </div>
       <br />
-      <button style={{backgroundColor: addingArmy ? 'green' : 'red'}} type="button" onClick={() => setAddingArmy(addingArmy ?  false : true)}> Añadir ejercito </button>
+      <button style={{backgroundColor: addingArmy ? 'peru' : 'grey'}} type="button" onClick={() => setAddingArmy(addingArmy ?  false : true)}> Añadir </button>
       <br />
       <ArmyCreator addingArmy={addingArmy} setAddingArmy={setAddingArmy} dispatch={dispatch} />
     </div>

@@ -8,16 +8,40 @@ function Unit(props) {
     name, armyIndex, index, numberUnits, dispatch, totalNumUnits,
   } = props;
   return (
-    <div style={{ border: 'solid', margin: '5px', padding: '5px', borderRadius: '15px',  backgroundColor: '#397477' }}>
+    <div style={{
+     borderBottom: 'outset', borderRight: 'outset', margin: '5px', padding: '5px', borderRadius: '15px',  backgroundColor: '#397477',
+    }}
+    >
       <UnitPerName name={name} />
-      <br />
-      <button type="button" style={{borderRadius:'20px', backgroundColor:'#ffffff', margin: '5px'}} onClick={() => {dispatch({ type: 'decrease', index, armyIndex }); if(numberUnits <= 1){ dispatch({ type: 'removeUnit', index, armyIndex })}}}>-</button>
-      {numberUnits}
-      <button type="button" style={{borderRadius:'20px', backgroundColor:'#ffffff', margin: '5px'}} onClick={() => { if (totalNumUnits < 7) { dispatch({ type: 'increase', index, armyIndex }); } }}>+</button>
-      <br />
-      <button type="button" style={{backgroundColor:'red'}} onClick={() => dispatch({ type: 'removeUnit', index, armyIndex })}>Del</button>
+      <div style={{display: 'flex', flexDirection:'row', alignItems: 'center', justifyContent: 'center'}}>
+        <button
+          type="button"
+          style={{ borderRadius: '10px', backgroundColor: '#ffffff' }}
+          onClick={() => {
+            dispatch({ type: 'decrease', index, armyIndex });
+            if (numberUnits <= 1) {
+              dispatch({ type: 'removeUnit', index, armyIndex });
+            }
+          }}
+        >
+          -
+        </button>
+        <div style={{ marginRight: '2px', marginLeft: '2px' }}>{numberUnits}</div>
+        <button
+          type="button"
+          style={{ borderRadius: '10px', backgroundColor: '#ffffff' }}
+          onClick={() => {
+            if (totalNumUnits < 7) {
+              dispatch({ type: 'increase', index, armyIndex });
+            }
+          }}
+        >
+          +
+        </button>
+      </div>
     </div>
   );
+  // <!-- <button type="button" style={{backgroundColor:'grey'}} onClick={() => dispatch({ type: 'removeUnit', index, armyIndex })}>Del</button> -->
 }
 
 export default Unit;

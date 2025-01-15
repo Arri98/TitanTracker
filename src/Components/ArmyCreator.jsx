@@ -15,7 +15,7 @@ function ArmyCreator(props) {
 
   return state ? (
     <div className="Army Picker" style={{ display: { state }, marginTop: '5px' }}>
-      Nombre del ejercito
+      Nombre
       <br />
       <input type="text" style={{ margin: '5px' }} onChange={handleChange} value={title} />
       <br />

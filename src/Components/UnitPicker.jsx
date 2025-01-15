@@ -15,8 +15,6 @@ function UnitPicker(props) {
 
   return state && numUnits < 7 ? (
     <div className="UnitPicker" style={{ display: { state } }}>
-      Elige la unidad a añadir
-      <br />
       <ButtonDiv armyIndex={armyIndex} index={index} dispatch={dispatch} />
       <br />
     </div>
