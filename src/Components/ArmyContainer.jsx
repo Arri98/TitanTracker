@@ -8,36 +8,41 @@ import ArmyCreator from './ArmyCreator';
 import Army from './Army';
 
 function ArmyContainer(props) {
-  const { title } = props;
+  const { title ,id } = props;
 
   const [addingArmy, setAddingArmy] = useState(false);
 
   const memoizedCallback = useCallback(
     (state, action) => {
+      let returnValue = {};
       switch (action.type) {
         case 'addArmy':
-          return [
+          returnValue = [
             ...state,
             { title: action.army, units: [], index: state.length },
           ];
+          break;
         case 'addUnit':
           const tempA = [...state];
           const temp2A = [...tempA[action.index].units, action.unit];
           tempA[action.index].units = temp2A;
-          return tempA;
+          returnValue = tempA;
+          break;
 
         case 'removeUnit':
           const tempR = [...state];
           let temp2R = tempR[action.armyIndex].units;
           temp2R = temp2R.filter((_, index) => index !== action.index);
           tempR[action.armyIndex].units = temp2R;
-          return tempR;
+          returnValue = tempR;
+          break;
         case 'increase':
           const tempI = [...state];
           const temp2I = tempI[action.armyIndex].units[action.index];
           temp2I.Num += 1;
           tempI[action.armyIndex].units[action.index] = temp2I;
-          return tempI;
+          returnValue = tempI;
+          break;
 
         case 'decrease':
           const tempD = [...state];
@@ -45,16 +50,20 @@ function ArmyContainer(props) {
           temp2D.Num -= 1;
           temp2D.Num = temp2D.Num <= 0 ? 0 : temp2D.Num;
           tempD[action.armyIndex].units[action.index] = temp2D;
-          return tempD;
+          returnValue = tempD;
+          break;
         case 'removeArmy':
-          return state.filter((_, index) => index !== action.index);
+          returnValue = state.filter((_, index) => index !== action.index);
+          break;
         default:
           return state;
       }
+      localStorage.setItem(`armies-${id}`, JSON.stringify(returnValue));
+      return returnValue;
     }, [],
   );
 
-  const [armies, dispatch] = useReducer(memoizedCallback, []);
+  const [armies, dispatch] = useReducer(memoizedCallback, JSON.parse(localStorage.getItem(`armies-${id}`)) || []);
 
   return (
     <div style={{ width: '100%' }}>
@@ -75,4 +84,5 @@ export default ArmyContainer;
 
 ArmyContainer.propTypes = {
   title: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
